@@ -1,0 +1,14 @@
+@if (courses().length === 0) {
+  <p>No hay cursos disponibles.</p>
+}
+@for (course of courses(); track course.id) {
+  <mat-card>
+    <mat-card-title>{{ course.name }}</mat-card-title>
+    <mat-card-content>   
+      {{ course.description }}<br>
+      Nivel: {{ course.level }}<br>
+      Duración: {{ course.duration }} horas<br>
+      Precio: ${{ course.price }}
+    </mat-card-content>
+  </mat-card>
+}
