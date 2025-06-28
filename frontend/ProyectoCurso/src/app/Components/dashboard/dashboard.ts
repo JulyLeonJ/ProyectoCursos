@@ -6,10 +6,11 @@ import { inject } from '@angular/core';
 import { CoursesService, Course } from '../../Services/courses.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { catchError, of } from 'rxjs';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatButtonModule, MatTableModule, MatPaginatorModule],
+  imports: [MatButtonModule, MatTableModule, MatPaginatorModule, MatDialogModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
@@ -25,9 +26,31 @@ courses = toSignal(
   ),
   { initialValue: [] as Course[] }
 );
-displayedColumns = ['Nombre', 'Descripción','Nivel','Duración', 'Precio','Acciones'];
+displayedColumns = ['name', 'description','level','duration', 'price','actions'];
 
-addCourse() {
-  // Aquí puedes implementar la lógica para agregar un curso
-  console.log('Agregar curso');
-}}
+ deleteCourse(id: number) {
+  this.service.deleteCourse(id).subscribe({
+    error: (err) => {
+      console.log('Error eliminando curso:', err);
+    }
+  });
+}
+
+updateCourse(id: number) {
+  this.service.updateCourse({id: 0, name: '', description: '', duration: 0, level: '', price: 0}).pipe(
+  catchError(err => {
+    console.log(err);
+    return of(null);
+  })
+), { initialValue: null };
+}
+
+addCourse = toSignal(this.service.addCourse({id: 0, name: '', description: '', duration: 0, level: '', price: 0}).pipe(
+  catchError(err => {
+    console.log(err);
+    return of(null);
+  })
+), { initialValue: null }
+);
+
+}
