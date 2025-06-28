@@ -31,6 +31,15 @@ export class CoursesService {
         );
     }
 
+    getCourseById(id: number): Observable<Course> {
+      return this.http.get<Course>(`${this.baseURL}/${id}`)
+    .pipe(
+        timeout(5000),
+        catchError((error) => {
+            console.error('Error obteniendo curso por ID:', error);
+            throw new Error('No se pudo obtener el curso');
+        }))}
+
 
 updateCourse(course: Course): Observable<Course> {
     return this.http.put<Course>(`${this.baseURL}/${course.id}`, course)
