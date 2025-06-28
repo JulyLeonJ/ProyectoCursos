@@ -41,14 +41,15 @@ displayedColumns = ['name', 'description','level','duration', 'price','actions']
 }
 
 updateCourse(id: number) {
-  this.dialog.open(FormPopup) 
-  this.service.updateCourse({id: 0, name: '', description: '', duration: 0, level: '', price: 0}).pipe(
-  catchError(err => {
-    console.log(err);
-    
-    return of(null);
-  })
-), { initialValue: null };
+  this.dialog.open(FormPopup, {
+    data: { id: id, action: 'update' },
+  }).afterClosed().subscribe((result: string) => {
+    if (result) {
+      console.log('Curso actualizado:', result);
+    } else {
+      console.log('Actualización cancelada');
+    }
+  }) 
 }
 
 addCourse = toSignal(this.service.addCourse({id: 0, name: '', description: '', duration: 0, level: '', price: 0}).pipe(
