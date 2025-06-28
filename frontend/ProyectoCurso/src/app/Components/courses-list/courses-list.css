@@ -1,0 +1,94 @@
+.courses-list {
+  max-width: var(--screen-xl);
+  margin: 2rem auto;
+
+  .courses-list-banner {
+    background: linear-gradient(to right, #4a148c, #6a1b9a);
+    color: white;
+    padding: 6rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+  }
+
+  .courses-list-courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+
+    .course-card {
+      background: #33333380;
+      border: 1px solid #444;
+      overflow: hidden;
+      position: relative;
+
+      .card-title {
+        padding: 16px;
+        font-weight: 500;
+      }
+
+      .card-content {
+        color: #e0e0e0;
+
+        p {
+            margin: 0;
+            padding-bottom: 16px;
+        }
+
+        .card-duration{
+            display: flex;
+            gap: 1ch;
+            align-items: center;
+            font-size: 0.9em;
+            
+            .clock-icon {
+                height: 1.2em;
+                filter: invert(80%);
+            }
+        }
+      }
+
+      .card-level {
+        position: absolute;
+        top: 1em;
+        left: 2ch;
+        padding: 0.2em 1ch;
+        border-radius: 1em;
+        font-size: 0.8em;
+        font-weight: 500;
+        box-shadow: 0 0 10px #0004;
+        
+        &.basic-level {
+            background: #09f2;
+            color: #09f;
+            border: 1px solid #09f;
+        }
+        
+        &.intermediate-level {
+            background: #ff980050;
+            color: #ff9800;
+            border: 1px solid #ff9800;
+        }
+
+        &.advanced-level {
+            background: #4caf5030;
+            color: #4caf50;
+            border: 1px solid #4caf50;
+        }
+      }
+
+      .card-price {
+        position: absolute;
+        top: 1em;
+        right: 2ch;
+        padding: 0.2em 1ch;
+        border-radius: 1em;
+        font-size: 0.8em;
+        font-weight: 500;
+        box-shadow: 0 0 10px #0004;
+        background: #6a1b9a;
+        color: #fff;
+      }
+    }
+  }
+}

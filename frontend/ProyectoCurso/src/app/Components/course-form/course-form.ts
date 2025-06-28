@@ -60,7 +60,7 @@ form = this.build.group({
       name: name,
       description: description,
       duration: duration,
-      level: level,
+      level: level || "",
       price: price
   }
 

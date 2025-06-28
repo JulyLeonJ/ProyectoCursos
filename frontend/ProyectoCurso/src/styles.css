@@ -5,3 +5,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    --font-color: #ffffff;
+    --screen-xl: 1280px;
+}
+
+body {
+    background: linear-gradient(to bottom right, #0f172a, #1e293b);
+    color: var(--font-color);
+    font-family: 'Roboto', sans-serif;
+}

@@ -8,7 +8,7 @@ export interface Course {
     name: string;
     description: string;
     duration: number; 
-    level: string; 
+    level: string;
     price: number; 
     
 }

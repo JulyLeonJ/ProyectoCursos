@@ -14,8 +14,28 @@ export class CoursesList{
   courses=signal(<Course[]>[]);
     
   ngOnInit() {
-    this.service.getCourses();
-   }
+    const coursesFound = this.service.getCourses();
+    coursesFound.subscribe({
+      next: (data) => {
+        this.courses.set(data);
+      },
+      error: (error) => {
+        console.error('Error al obtener los cursos:', error);
+      }
+    });
+  }
 
+  getLevelClass(level: string): string {
+    switch (level) {
+      case 'Básico':
+        return 'basic-level';
+      case 'Intermedio':
+        return 'intermediate-level';
+      case 'Avanzado':
+        return 'advanced-level';
+      default:
+        return '';
+    }
+  }
 
 }

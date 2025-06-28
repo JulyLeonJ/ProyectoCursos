@@ -1,0 +1,13 @@
+.toolbar {
+    background: unset;
+    color: white;
+    border-bottom: 1px solid #ccc;
+    
+    .toolbar-container {
+        max-width: var(--screen-xl);
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+}

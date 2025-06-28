@@ -1,14 +1,30 @@
-@if (courses().length === 0) {
+<main class="courses-list">
+  <section class="courses-list-banner">
+    <h1>Un buen banner</h1>
+  </section>
+
+  @if (courses().length === 0) {
   <p>No hay cursos disponibles.</p>
-}
-@for (course of courses(); track course.id) {
-  <mat-card>
-    <mat-card-title>{{ course.name }}</mat-card-title>
-    <mat-card-content>   
-      {{ course.description }}<br>
-      Nivel: {{ course.level }}<br>
-      Duración: {{ course.duration }} horas<br>
-      Precio: ${{ course.price }}
-    </mat-card-content>
-  </mat-card>
-}
+  }
+  <section class="courses-list-courses">
+    @for (course of courses(); track course.id) {
+    <mat-card class="course-card">
+      <img src="generic-course-image.webp" alt="imágen del curso" class="course-image" />
+      <mat-card-title class="card-title">{{ course.name }}</mat-card-title>
+      <mat-card-content class="card-content">
+        <p>{{ course.description }}</p>
+        <p class="card-duration">
+          <img src="clock.svg" alt="imágen de duración" class="clock-icon" /> 
+          {{ course.duration }}
+        </p>
+      </mat-card-content>
+      <span [class]="'card-level ' + getLevelClass(course.level)">
+        {{ course.level }}
+      </span>
+      <span class="card-price">
+        ${{ course.price }}
+      </span>
+    </mat-card>
+    }
+  </section>
+</main>
