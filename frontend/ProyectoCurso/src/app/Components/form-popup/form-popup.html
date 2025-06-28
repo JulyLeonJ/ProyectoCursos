@@ -1,11 +1,12 @@
 <h2 mat-dialog-title>Cursos</h2>
-<mat-dialog-content class="mat-typography">
-  <app-course-form (datos)="{}">
-
-
-  </app-course-form>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button matButton mat-dialog-close>Cancel</button>
-  <button matButton [mat-dialog-close]="true" onclick="submit()">Enviar</button>
-</mat-dialog-actions>
+<form onsubmit="submit">
+  <mat-dialog-content class="mat-typography">
+    <app-course-form [data]="formData">
+    </app-course-form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button matButton mat-dialog-close>Cancel</button>
+    <button matButton [mat-dialog-close]="true" type="submit">Enviar</button>
+  </mat-dialog-actions>
+</form>
+  

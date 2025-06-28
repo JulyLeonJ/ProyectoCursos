@@ -1,24 +1,24 @@
 <mat-form-field appearance="fill">
     <mat-label>Nombre</mat-label>
-    <input matInput formControlName="name">
+    <input matInput name="name" [value]="data.name">
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Descripción</mat-label>
-    <textarea matInput formControlName="description"></textarea>
+    <textarea matInput name="description" [value]="data.description"></textarea>
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Duración</mat-label>
-    <input matInput formControlName="duration">
+    <input matInput name="duration" [value]="data.duration">
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Nivel</mat-label>
-    <mat-select>
+    <mat-select name="level" [value]="data.level">
         <mat-option value="Principiante">Principiante</mat-option>
         <mat-option value="Intermedio">Intermedio</mat-option>
         <mat-option value="Avanzado">Avanzado</mat-option>
-    </mat-select >
+    </mat-select>
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Precio</mat-label>
-    <input matInput formControlName="price">
+    <input matInput name="price" [value]="data.price" type="number">
 </mat-form-field>

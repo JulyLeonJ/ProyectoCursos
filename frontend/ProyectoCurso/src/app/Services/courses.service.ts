@@ -18,7 +18,7 @@ export interface Course {
 })
 export class CoursesService {
     private http:HttpClient=inject(HttpClient)
-    private baseURL = 'http://localhost:8084/course'; 
+    private baseURL = '/course'; 
 
     getCourses(): Observable<Course[]> {
         return this.http.get<Course[]>(this.baseURL)

@@ -52,12 +52,15 @@ updateCourse(id: number) {
   }) 
 }
 
-addCourse = toSignal(this.service.addCourse({id: 0, name: '', description: '', duration: 0, level: '', price: 0}).pipe(
-  catchError(err => {
-    console.log(err);
-    return of(null);
-  })
-), { initialValue: null }
-);
+addCourse(){
+  this.dialog.open(FormPopup, {
+    data: {action: 'addCourse' },
+  }).afterClosed().subscribe((result: string) => {
+    if (result) {
+      console.log('Curso agregado:', result);
+    } else {
+      console.log('Adición de curso cancelada');
+    }
+     })  }
 
 }
