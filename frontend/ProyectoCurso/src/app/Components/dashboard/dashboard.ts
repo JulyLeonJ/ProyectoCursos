@@ -7,6 +7,9 @@ import { CoursesService, Course } from '../../Services/courses.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { catchError, of } from 'rxjs';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { CourseForm } from '../course-form/course-form';
+import { FormPopup } from '../form-popup/form-popup';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 })
 export class Dashboard {
 private service = inject(CoursesService);
+readonly dialog = inject(MatDialog);
 
 courses = toSignal(
   this.service.getCourses().pipe(
@@ -37,9 +41,11 @@ displayedColumns = ['name', 'description','level','duration', 'price','actions']
 }
 
 updateCourse(id: number) {
+  this.dialog.open(FormPopup) 
   this.service.updateCourse({id: 0, name: '', description: '', duration: 0, level: '', price: 0}).pipe(
   catchError(err => {
     console.log(err);
+    
     return of(null);
   })
 ), { initialValue: null };
